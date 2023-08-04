@@ -18,15 +18,6 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 
-// src/components/Box.tsx
-import { styled } from "@stitches/react";
-var Box = styled("div", {
-  padding: "$4",
-  borderRadius: "$md",
-  backgroundColor: "$gray800",
-  border: "1px solid $gray600"
-});
-
 // ../tokens/dist/index.mjs
 var colors = {
   white: "#FFF",
@@ -103,7 +94,7 @@ var lineHeights = {
 // src/styles/index.ts
 import { createStitches, defaultThemeMap } from "@stitches/react";
 var {
-  styled: styled2,
+  styled,
   css,
   globalCss,
   keyframes,
@@ -127,8 +118,16 @@ var {
   }
 });
 
+// src/components/Box.tsx
+var Box = styled("div", {
+  padding: "$4",
+  borderRadius: "$md",
+  backgroundColor: "$gray800",
+  border: "1px solid $gray600"
+});
+
 // src/components/Text.tsx
-var Text = styled2("p", {
+var Text = styled("p", {
   fontFamily: "$default",
   lineHeight: "$base",
   margin: 0,
@@ -156,7 +155,7 @@ var Text = styled2("p", {
 });
 
 // src/components/Heading.tsx
-var Heading = styled2("h2", {
+var Heading = styled("h2", {
   fontFamily: "$default",
   lineHeight: "$shorter",
   margin: 0,
@@ -183,20 +182,20 @@ import { User } from "phosphor-react";
 
 // src/components/Avatar/styles.ts
 import * as Avatar from "@radix-ui/react-avatar";
-var AvatarContainer = styled2(Avatar.Root, {
+var AvatarContainer = styled(Avatar.Root, {
   borderRadius: "$full",
   display: "inline-block",
   width: "$12",
   height: "$12",
   overflow: "hidden"
 });
-var AvatarImage = styled2(Avatar.Image, {
+var AvatarImage = styled(Avatar.Image, {
   width: "100%",
   height: "100%",
   objectFit: "cover",
   borderRadius: "inherit"
 });
-var AvatarFallback = styled2(Avatar.Fallback, {
+var AvatarFallback = styled(Avatar.Fallback, {
   width: "100%",
   height: "100%",
   display: "flex",
@@ -218,9 +217,83 @@ function Avatar2(props) {
     /* @__PURE__ */ jsx(AvatarFallback, { delayMs: 600, children: /* @__PURE__ */ jsx(User, {}) })
   ] });
 }
+
+// src/components/Button.tsx
+var Button = styled("button", {
+  all: "unset",
+  borderRadius: "$sm",
+  fontSize: "$sm",
+  fontWeight: "$medium",
+  fontFamily: "$default",
+  textAlign: "center",
+  minWidth: 120,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  cursor: "pointer",
+  svg: {
+    width: "$4",
+    height: "$4"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  variants: {
+    variant: {
+      primary: {
+        color: "$white",
+        background: "$ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite300"
+        },
+        "&:disabled": {
+          backgroundColor: "$gray200"
+        }
+      },
+      secondary: {
+        color: "$ignite300",
+        border: "2px solid $ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite500",
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray200",
+          borderColor: "$gray200"
+        }
+      },
+      tertiary: {
+        color: "$gray100",
+        "&:not(:disabled):hover": {
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray600"
+        }
+      }
+    },
+    size: {
+      sm: {
+        padding: "0 $4",
+        height: 38
+      },
+      md: {
+        padding: "0 $4",
+        height: 46
+      }
+    }
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md"
+  }
+});
 export {
   Avatar2 as Avatar,
   Box,
+  Button,
   Heading,
   Text
 };

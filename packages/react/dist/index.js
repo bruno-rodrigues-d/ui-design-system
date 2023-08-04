@@ -49,19 +49,11 @@ var src_exports = {};
 __export(src_exports, {
   Avatar: () => Avatar2,
   Box: () => Box,
+  Button: () => Button,
   Heading: () => Heading,
   Text: () => Text
 });
 module.exports = __toCommonJS(src_exports);
-
-// src/components/Box.tsx
-var import_react = require("@stitches/react");
-var Box = (0, import_react.styled)("div", {
-  padding: "$4",
-  borderRadius: "$md",
-  backgroundColor: "$gray800",
-  border: "1px solid $gray600"
-});
 
 // ../tokens/dist/index.mjs
 var colors = {
@@ -137,9 +129,9 @@ var lineHeights = {
 };
 
 // src/styles/index.ts
-var import_react2 = require("@stitches/react");
+var import_react = require("@stitches/react");
 var {
-  styled: styled2,
+  styled,
   css,
   globalCss,
   keyframes,
@@ -147,8 +139,8 @@ var {
   theme,
   createTheme,
   config
-} = (0, import_react2.createStitches)({
-  themeMap: __spreadProps(__spreadValues({}, import_react2.defaultThemeMap), {
+} = (0, import_react.createStitches)({
+  themeMap: __spreadProps(__spreadValues({}, import_react.defaultThemeMap), {
     height: "space",
     width: "space"
   }),
@@ -163,8 +155,16 @@ var {
   }
 });
 
+// src/components/Box.tsx
+var Box = styled("div", {
+  padding: "$4",
+  borderRadius: "$md",
+  backgroundColor: "$gray800",
+  border: "1px solid $gray600"
+});
+
 // src/components/Text.tsx
-var Text = styled2("p", {
+var Text = styled("p", {
   fontFamily: "$default",
   lineHeight: "$base",
   margin: 0,
@@ -192,7 +192,7 @@ var Text = styled2("p", {
 });
 
 // src/components/Heading.tsx
-var Heading = styled2("h2", {
+var Heading = styled("h2", {
   fontFamily: "$default",
   lineHeight: "$shorter",
   margin: 0,
@@ -219,20 +219,20 @@ var import_phosphor_react = require("phosphor-react");
 
 // src/components/Avatar/styles.ts
 var Avatar = __toESM(require("@radix-ui/react-avatar"));
-var AvatarContainer = styled2(Avatar.Root, {
+var AvatarContainer = styled(Avatar.Root, {
   borderRadius: "$full",
   display: "inline-block",
   width: "$12",
   height: "$12",
   overflow: "hidden"
 });
-var AvatarImage = styled2(Avatar.Image, {
+var AvatarImage = styled(Avatar.Image, {
   width: "100%",
   height: "100%",
   objectFit: "cover",
   borderRadius: "inherit"
 });
-var AvatarFallback = styled2(Avatar.Fallback, {
+var AvatarFallback = styled(Avatar.Fallback, {
   width: "100%",
   height: "100%",
   display: "flex",
@@ -254,10 +254,84 @@ function Avatar2(props) {
     /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AvatarFallback, { delayMs: 600, children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(import_phosphor_react.User, {}) })
   ] });
 }
+
+// src/components/Button.tsx
+var Button = styled("button", {
+  all: "unset",
+  borderRadius: "$sm",
+  fontSize: "$sm",
+  fontWeight: "$medium",
+  fontFamily: "$default",
+  textAlign: "center",
+  minWidth: 120,
+  boxSizing: "border-box",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: "$2",
+  cursor: "pointer",
+  svg: {
+    width: "$4",
+    height: "$4"
+  },
+  "&:disabled": {
+    cursor: "not-allowed"
+  },
+  variants: {
+    variant: {
+      primary: {
+        color: "$white",
+        background: "$ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite300"
+        },
+        "&:disabled": {
+          backgroundColor: "$gray200"
+        }
+      },
+      secondary: {
+        color: "$ignite300",
+        border: "2px solid $ignite500",
+        "&:not(:disabled):hover": {
+          background: "$ignite500",
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray200",
+          borderColor: "$gray200"
+        }
+      },
+      tertiary: {
+        color: "$gray100",
+        "&:not(:disabled):hover": {
+          color: "$white"
+        },
+        "&:disabled": {
+          color: "$gray600"
+        }
+      }
+    },
+    size: {
+      sm: {
+        padding: "0 $4",
+        height: 38
+      },
+      md: {
+        padding: "0 $4",
+        height: 46
+      }
+    }
+  },
+  defaultVariants: {
+    variant: "primary",
+    size: "md"
+  }
+});
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Avatar,
   Box,
+  Button,
   Heading,
   Text
 });
