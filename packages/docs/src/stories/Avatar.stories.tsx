@@ -4,9 +4,17 @@ import { Avatar, AvatarProps } from '@ignite-ui/react'
 export default {
   title: 'Data display/Avatar',
   component: Avatar,
+  tags: ['autodocs'],
   args: {
     src: 'https://github.com/bruno-rodrigues-d.png',
     alt: 'Bruno Rodrigues'
+  },
+  argTypes: {
+    src: { 
+      control: {
+        type: 'text',
+      }
+    }
   }
 } as Meta<AvatarProps>
 

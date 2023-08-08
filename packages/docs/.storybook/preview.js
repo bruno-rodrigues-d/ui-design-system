@@ -8,7 +8,18 @@ const preview = {
         date: /Date$/,
       },
     },
+    previewTabs: {
+      'storybook/docs/panel': { hidden: true }
+    }
   },
 };
 
 export default preview;
+
+export const parameters = {
+  previewTabs: {
+    'storybook/docs/panel': {
+      hidden: true
+    }
+  }
+};
